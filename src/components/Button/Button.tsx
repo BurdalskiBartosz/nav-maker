@@ -27,12 +27,12 @@ const Button = ({
     <button
       onClick={handleClick}
       className={cn(
-        "font-semibold flex items-center  gap-1  duration-200 ease-linear rounded-md py-[10px] px-[14px] ",
+        "flex items-center gap-1 rounded-md px-[14px] py-[10px] font-semibold duration-200 ease-linear",
         buttonStyles[type],
         {
           "shadow-xs": children,
           border: withBorders,
-        }
+        },
       )}
     >
       {icon} {children}

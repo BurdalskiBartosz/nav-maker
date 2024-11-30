@@ -7,7 +7,7 @@ type EmptyStateProps = {
 
 const EmptyState = ({ handleClick }: EmptyStateProps) => {
   return (
-    <div className="rounded-md py-6 px-4 flex flex-col items-center bg-secondary  border border-secondary">
+    <div className="flex flex-col items-center rounded-md border border-secondary bg-secondary px-4 py-6">
       <div className="mb-6 text-center">
         <p className="font-semibold text-primary-900">Menu jest puste</p>
         <p className="text-sm text-tetiary-600">

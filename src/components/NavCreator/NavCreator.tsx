@@ -23,7 +23,7 @@ const NavCreator = () => {
   };
 
   const handleSumbit = async (
-    event: FormEvent<HTMLFormElement | HTMLButtonElement>
+    event: FormEvent<HTMLFormElement | HTMLButtonElement>,
   ) => {
     event.preventDefault();
     await createNav(nav);

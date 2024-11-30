@@ -42,10 +42,10 @@ const AddNavElementForm = ({
   }
 
   return (
-    <div className="py-5 flex items-start gap-x-4 px-6 border border-primary rounded-md">
+    <div className="flex items-start gap-x-4 rounded-md border border-primary px-6 py-5">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col flex-grow gap-y-5"
+        className="flex flex-grow flex-col gap-y-5"
       >
         <div className="flex flex-col gap-y-2">
           <Input

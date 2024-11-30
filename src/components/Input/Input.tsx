@@ -11,10 +11,10 @@ type InputProps = {
 const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ id, label, placeholder, error, ...rest }, ref) => {
     return (
-      <div className="flex flex-col gap-1.5 gap-y-1.5 relative">
+      <div className="relative flex flex-col gap-1.5 gap-y-1.5">
         <label
           htmlFor={id}
-          className={cn("text-sm text-tetiary-700 font-medium", {
+          className={cn("text-sm font-medium text-tetiary-700", {
             "text-red-500": error,
           })}
         >
@@ -25,20 +25,20 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           id={id}
           type="text"
           className={cn(
-            "py-2 px-3 text-placeholder border border-primary rounded-md",
+            "rounded-md border border-primary px-3 py-2 text-placeholder",
             {
               "border-red-500": error,
-            }
+            },
           )}
           placeholder={placeholder}
           {...rest}
         />
-        <p className="absolute top-full text-sm right-0 text-red-500">
+        <p className="absolute right-0 top-full text-sm text-red-500">
           {error}
         </p>
       </div>
     );
-  }
+  },
 );
 
 Input.displayName = "Input";
