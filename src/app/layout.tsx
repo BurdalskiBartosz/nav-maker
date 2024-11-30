@@ -8,7 +8,7 @@ const RootLayout = ({
   return (
     <html lang="en">
       <body className="antialiased">
-        <div className="container">{children}</div>
+        <div className="container max-w-[1200px]">{children}</div>
       </body>
     </html>
   );
