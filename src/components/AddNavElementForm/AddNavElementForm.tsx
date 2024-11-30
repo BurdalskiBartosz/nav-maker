@@ -5,9 +5,12 @@ import { useForm } from "react-hook-form";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
 import TrashIcon from "../Icons/TrashIcon/TrashIcon";
+import { TreeItem } from "@/types";
+import { generateId } from "@/utils/generateId";
 
 type AddNavElementFormProps = {
   handleCancel: () => void;
+  handleNavSubmit: (data: TreeItem) => void;
 };
 
 const navItemSchema = z.object({
@@ -15,7 +18,10 @@ const navItemSchema = z.object({
   link: z.string().min(1, { message: "Link is required" }),
 });
 
-const AddNavElementForm = ({ handleCancel }: AddNavElementFormProps) => {
+const AddNavElementForm = ({
+  handleCancel,
+  handleNavSubmit,
+}: AddNavElementFormProps) => {
   const {
     register,
     handleSubmit,
@@ -24,8 +30,15 @@ const AddNavElementForm = ({ handleCancel }: AddNavElementFormProps) => {
     resolver: zodResolver(navItemSchema),
   });
 
-  async function onSubmit(data: { name: string; link: string }) {
-    console.log(data);
+  function onSubmit({ name, link }: { name: string; link: string }) {
+    const navData = {
+      id: generateId(),
+      name,
+      link,
+      children: [],
+    };
+
+    handleNavSubmit(navData);
   }
 
   return (

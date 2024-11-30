@@ -4,7 +4,7 @@ import cn from "classnames";
 type ButtonTypes = "primary" | "secondary" | "tetiary";
 
 type ButtonProps = {
-  handleClick: () => void;
+  handleClick?: () => void;
   type?: ButtonTypes;
   icon?: ReactNode;
   withBorders?: boolean;
