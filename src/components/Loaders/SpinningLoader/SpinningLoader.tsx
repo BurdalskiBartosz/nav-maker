@@ -1,4 +1,4 @@
-import LoadingIcon from "../Icons/LoadingIcon/LoadingIcon";
+import LoadingIcon from "../../Icons/LoadingIcon/LoadingIcon";
 
 const Loader = () => {
   return (
