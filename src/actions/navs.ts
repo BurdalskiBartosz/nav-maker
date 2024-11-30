@@ -1,6 +1,6 @@
 "use server";
 
-import { Navs, TreeItems } from "@/types";
+import { Nav, TreeItems } from "@/types";
 import { redirect } from "next/navigation";
 
 export async function createNav(items: TreeItems) {
@@ -16,7 +16,7 @@ export async function getNavs() {
   const res = await fetch("http://localhost:3000/api/nav", {
     next: { tags: ["nav"] },
   });
-  const data = (await res.json()) as Navs;
+  const data = (await res.json()) as Nav[];
 
   return data;
 }

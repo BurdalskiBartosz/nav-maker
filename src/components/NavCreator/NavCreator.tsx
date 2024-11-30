@@ -1,10 +1,10 @@
 "use client";
 import { FormEvent, useState } from "react";
 import AddNavElementForm from "@/components/AddNavElementForm/AddNavElementForm";
-import EmptyState from "./_components/EmptyState";
 import { TreeItem, TreeItems } from "@/types";
 import { createNav } from "@/actions/navs";
 import Button from "../Button/Button";
+import EmptyStateInfoBox from "../EmptyStateInfoBox/EmptyStateInfoBox";
 
 const NavCreator = () => {
   const [showForm, setShowForm] = useState(false);
@@ -37,7 +37,12 @@ const NavCreator = () => {
           handleCancel={handleCancel}
         />
       ) : (
-        <EmptyState handleClick={handleShowForm} />
+        <EmptyStateInfoBox
+          title="Menu jest puste"
+          subtitle="W tym menu nie ma jeszcze żadnych linków."
+          buttonLabel="Dodaj pozycję menu"
+          handleClick={handleShowForm}
+        />
       )}
       {!!nav.length && (
         <div>

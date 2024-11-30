@@ -9,7 +9,7 @@ export interface TreeItem {
 
 export type TreeItems = TreeItem[];
 
-export type Navs = {
+export type Nav = {
   id: string;
   items: TreeItems;
-}[];
+};
