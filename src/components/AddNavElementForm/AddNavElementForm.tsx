@@ -7,10 +7,13 @@ import Input from "../Input/Input";
 import TrashIcon from "../Icons/TrashIcon/TrashIcon";
 import { TreeItem } from "@/types";
 import { generateId } from "@/utils/generateId";
+import { UniqueIdentifier } from "@dnd-kit/core";
 
 type AddNavElementFormProps = {
+  elementId?: UniqueIdentifier;
+  defaultValues?: z.infer<typeof navItemSchema>;
   handleCancel: () => void;
-  handleNavSubmit: (data: TreeItem) => void;
+  handleNavLinkSubmit: (data: TreeItem, id?: string, edit?: boolean) => void;
 };
 
 const navItemSchema = z.object({
@@ -19,8 +22,10 @@ const navItemSchema = z.object({
 });
 
 const AddNavElementForm = ({
+  elementId,
+  defaultValues,
   handleCancel,
-  handleNavSubmit,
+  handleNavLinkSubmit,
 }: AddNavElementFormProps) => {
   const {
     register,
@@ -28,6 +33,7 @@ const AddNavElementForm = ({
     formState: { errors },
   } = useForm<z.infer<typeof navItemSchema>>({
     resolver: zodResolver(navItemSchema),
+    defaultValues,
   });
 
   function onSubmit({ name, link }: { name: string; link: string }) {
@@ -38,11 +44,15 @@ const AddNavElementForm = ({
       children: [],
     };
 
-    handleNavSubmit(navData);
+    handleNavLinkSubmit(
+      navData,
+      elementId as string | undefined,
+      !!defaultValues,
+    );
   }
 
   return (
-    <div className="flex items-start gap-x-4 rounded-md border border-primary px-6 py-5">
+    <div className="flex items-start gap-x-4 rounded-lg border border-primary bg-white px-6 py-5">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-grow flex-col gap-y-5"
@@ -67,9 +77,7 @@ const AddNavElementForm = ({
           <Button type="secondary" handleClick={handleCancel}>
             Anuluj
           </Button>
-          <Button type="tetiary" handleClick={() => {}}>
-            Dodaj
-          </Button>
+          <Button type="tetiary">{defaultValues ? "Zapisz" : "Dodaj"}</Button>
         </div>
       </form>
       <Button
