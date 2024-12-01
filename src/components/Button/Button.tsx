@@ -24,8 +24,10 @@ const Button = ({
 }: PropsWithChildren<ButtonProps>) => {
   const buttonStyles: Record<ButtonTypes, string> = {
     secondary: "border-primary text-tetiary-700 bg-white hover:bg-secondary",
-    primary: "border-button-primary bg-primary text-white hover:bg-[#6941C6]",
-    tetiary: "border-[#D6BBFB] text-[#6941C6] hover:bg-[#F9F5FF]",
+    primary:
+      "border-button-primary bg-primary text-white hover:bg-button-secondary-fg",
+    tetiary:
+      "border-button-secondary text-button-secondary-fg hover:bg-button-tetiary-hover",
   };
 
   const props = {

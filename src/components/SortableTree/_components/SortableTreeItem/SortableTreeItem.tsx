@@ -52,6 +52,7 @@ export function SortableTreeItem({
     id,
     animateLayoutChanges,
   });
+
   const style: CSSProperties = {
     transform: CSS.Translate.toString(transform),
     transition,
@@ -64,10 +65,14 @@ export function SortableTreeItem({
     handleShowForm();
   };
 
+  const handleAddNew = () => {
+    if (isEdit) setIsEdit(false);
+    handleShowForm();
+  };
   return (
     <li
       className={cn("list-none", {
-        "pointer-events-none inline-block p-0 pl-2.5 pt-[5px]": clone,
+        "pointer-events-none inline-block p-0 pl-2.5 pt-1": clone,
         "opacity-50": isDragging,
         "pointer-events-none": isSorting,
       })}
@@ -78,8 +83,8 @@ export function SortableTreeItem({
     >
       <div
         className={cn(
-          "relative -mt-px flex items-center border-b border-t border-secondary bg-white px-6 py-4 text-[#222]",
-          { "shadow-tree rounded pr-6": clone },
+          "relative -mt-px flex items-center border-b border-t border-secondary bg-white px-6 py-4",
+          { "rounded pr-6 shadow-tree": clone },
           { "rounded-es-md border-l": depth },
         )}
         ref={setDraggableNodeRef}
@@ -95,7 +100,7 @@ export function SortableTreeItem({
           <Actions
             onRemove={onRemove}
             onEdit={handleEdit}
-            onAddNew={handleShowForm}
+            onAddNew={handleAddNew}
           />
         )}
         <ChildCount clone={clone} childCount={childCount} />

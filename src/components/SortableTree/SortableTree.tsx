@@ -70,7 +70,7 @@ const SortableTree = ({
       onDragCancel={handleDragCancel}
     >
       <SortableContext items={sortedIds} strategy={verticalListSortingStrategy}>
-        <div className="overflow-hidden rounded-lg border border-[#dedede] bg-[#F9FAFB]">
+        <div className="overflow-hidden rounded-lg border border-secondary bg-secondary">
           {flattenedItems.map(({ id, depth, name, link }) => (
             <SortableTreeItem
               key={id}

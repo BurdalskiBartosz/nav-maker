@@ -29,7 +29,7 @@ const GoToNavigation = ({ data }: GoToNavigationProps) => {
   return (
     <div
       onClick={handleClick}
-      className="flex cursor-pointer items-center justify-between rounded-lg border border-secondary px-4 py-6 duration-200 hover:bg-[#F9F5FF]"
+      className="flex cursor-pointer items-center justify-between rounded-lg border border-secondary px-4 py-6 duration-200 hover:bg-secondary"
     >
       <div>
         {id} - <span className="font-bold">{names}</span>

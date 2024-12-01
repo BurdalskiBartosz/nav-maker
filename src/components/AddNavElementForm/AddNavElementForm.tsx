@@ -8,6 +8,8 @@ import TrashIcon from "../Icons/TrashIcon/TrashIcon";
 import { TreeItem } from "@/types";
 import { generateId } from "@/utils/generateId";
 import type { UniqueIdentifier } from "@dnd-kit/core";
+import { useEffect } from "react";
+import MagnifierIcon from "../Icons/MagnifierIcon/MagnifierIcon";
 
 type AddNavElementFormProps = {
   elementId?: UniqueIdentifier;
@@ -32,11 +34,16 @@ const AddNavElementForm = ({
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<z.infer<typeof navItemSchema>>({
     resolver: zodResolver(navItemSchema),
-    defaultValues,
+    defaultValues: { name: "", link: "" },
   });
+
+  useEffect(() => {
+    reset(defaultValues ?? { name: "", link: "" });
+  }, [reset, defaultValues]);
 
   const onSubmit = ({ name, link }: { name: string; link: string }) => {
     const navData = {
@@ -79,6 +86,7 @@ const AddNavElementForm = ({
             id="link"
             label="Link"
             placeholder="Wklej lub wyszukaj"
+            icon={<MagnifierIcon />}
             {...register("link")}
             error={errors?.link?.message}
           />
