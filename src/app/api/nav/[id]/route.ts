@@ -1,4 +1,4 @@
-import { navs } from "@/services/mockData";
+import { navs } from "@/mock/mockData";
 
 export async function GET(
   request: Request,

@@ -1,5 +1,5 @@
 import { delay } from "@/helper/delay";
-import { navs } from "@/services/mockData";
+import { navs } from "@/mock/mockData";
 import { generateId } from "@/utils/generateId";
 
 export async function GET() {
@@ -19,6 +19,5 @@ export async function POST(req: Request) {
   } else {
     navs.push({ id: generateId(), items });
   }
-  await delay(500);
   return Response.json(true);
 }
