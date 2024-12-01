@@ -10,6 +10,7 @@ type ButtonProps = {
   icon?: ReactNode;
   withBorders?: boolean;
   href?: string;
+  className?: string;
 };
 
 const Button = ({
@@ -18,6 +19,7 @@ const Button = ({
   type = "tetiary",
   icon,
   withBorders = true,
+  className,
   href,
 }: PropsWithChildren<ButtonProps>) => {
   const buttonStyles: Record<ButtonTypes, string> = {
@@ -28,12 +30,13 @@ const Button = ({
 
   const props = {
     className: cn(
-      "flex items-center gap-1 rounded-md px-[14px] py-[10px] font-semibold duration-200 ease-linear",
+      "flex items-center gap-1 rounded-lg px-3.5 py-2.5 font-semibold duration-200 ease-linear",
       buttonStyles[type],
       {
         "shadow-xs": children,
         border: withBorders,
       },
+      className,
     ),
   };
 

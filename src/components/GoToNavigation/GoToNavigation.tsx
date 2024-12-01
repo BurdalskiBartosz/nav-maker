@@ -18,7 +18,7 @@ const GoToNavigation = ({ data }: GoToNavigationProps) => {
   return (
     <Link
       href={`/navigation-creator/${id}`}
-      className="flex items-center justify-between rounded-md border border-secondary px-4 py-6 duration-200 hover:bg-[#F9F5FF]"
+      className="flex items-center justify-between rounded-lg border border-secondary px-4 py-6 duration-200 hover:bg-[#F9F5FF]"
     >
       <div>
         {id} - <span className="font-bold">{names}</span>

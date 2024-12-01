@@ -25,7 +25,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           id={id}
           type="text"
           className={cn(
-            "rounded-md border border-primary px-3 py-2 text-placeholder",
+            "rounded-lg border border-primary px-3 py-2 text-placeholder",
             {
               "border-red-500": error,
             },

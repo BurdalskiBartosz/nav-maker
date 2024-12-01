@@ -14,6 +14,7 @@ export default {
     extend: {
       boxShadow: {
         xs: " 0px 1px 2px 0px #1018280D",
+        tree: "0px 15px 15px 0 rgba(34, 33, 81, 0.1)",
       },
       colors: {
         secondary: "#F9FAFB",

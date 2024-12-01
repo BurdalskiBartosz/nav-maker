@@ -17,7 +17,7 @@ const EmptyStateInfoBox = ({
   href,
 }: EmptyStateInfoBoxProps) => {
   return (
-    <div className="flex flex-col items-center rounded-md border border-secondary bg-secondary px-4 py-6">
+    <div className="flex flex-col items-center rounded-lg border border-secondary bg-secondary px-4 py-6">
       <div className="mb-6 text-center">
         <p className="font-semibold text-primary-900">{title}</p>
         {subtitle && <p className="text-sm text-tetiary-600">{subtitle}</p>}

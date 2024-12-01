@@ -13,3 +13,9 @@ export type Nav = {
   id: string;
   items: TreeItems;
 };
+
+export type FlattenedItem = TreeItem & {
+  parentId: UniqueIdentifier | null;
+  depth: number;
+  index: number;
+};

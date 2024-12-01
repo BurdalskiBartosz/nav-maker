@@ -1,4 +1,4 @@
-import { Navs, TreeItems } from "@/types";
+import { Nav, TreeItems } from "@/types";
 
 export const homepageNav: TreeItems = [
   {
@@ -34,6 +34,6 @@ export const homepageNav: TreeItems = [
   },
 ];
 
-export const navs: Navs = [
+export const navs: Nav[] = [
   { id: "60f052f2-595c-485a-af20-c2b2fe1aeab2", items: homepageNav },
 ];
