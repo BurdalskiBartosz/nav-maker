@@ -9,6 +9,7 @@ const RootLayout = ({
     <html lang="en">
       <body className="antialiased">
         <div className="container max-w-[1200px]">{children}</div>
+        <div id="portal"></div>
       </body>
     </html>
   );
