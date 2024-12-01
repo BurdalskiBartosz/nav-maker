@@ -5,7 +5,7 @@ import Link from "next/link";
 type ButtonTypes = "primary" | "secondary" | "tetiary";
 
 type ButtonProps = {
-  handleClick?: () => void;
+  handleClick?: (args: any) => void;
   type?: ButtonTypes;
   icon?: ReactNode;
   withBorders?: boolean;

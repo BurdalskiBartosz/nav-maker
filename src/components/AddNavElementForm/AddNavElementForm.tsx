@@ -14,6 +14,7 @@ type AddNavElementFormProps = {
   defaultValues?: z.infer<typeof navItemSchema>;
   handleHideForm: () => void;
   handleNavLinkSubmit: (data: TreeItem, id?: string, edit?: boolean) => void;
+  onRemove?: () => void;
 };
 
 const navItemSchema = z.object({
@@ -26,6 +27,7 @@ const AddNavElementForm = ({
   defaultValues,
   handleHideForm,
   handleNavLinkSubmit,
+  onRemove,
 }: AddNavElementFormProps) => {
   const {
     register,
@@ -36,7 +38,7 @@ const AddNavElementForm = ({
     defaultValues,
   });
 
-  function onSubmit({ name, link }: { name: string; link: string }) {
+  const onSubmit = ({ name, link }: { name: string; link: string }) => {
     const navData = {
       id: generateId(),
       name,
@@ -50,7 +52,14 @@ const AddNavElementForm = ({
       !!defaultValues,
     );
     handleHideForm();
-  }
+  };
+
+  const handleTrashClick = () => {
+    if (defaultValues && onRemove) {
+      onRemove();
+    }
+    handleHideForm();
+  };
 
   return (
     <div className="flex items-start gap-x-4 rounded-lg border border-primary bg-white px-6 py-5">
@@ -84,7 +93,7 @@ const AddNavElementForm = ({
       <Button
         type="secondary"
         withBorders={false}
-        handleClick={() => {}}
+        handleClick={handleTrashClick}
         icon={<TrashIcon />}
       />
     </div>

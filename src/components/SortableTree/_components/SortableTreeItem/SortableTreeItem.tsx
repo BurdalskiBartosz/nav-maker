@@ -3,12 +3,12 @@ import type { UniqueIdentifier } from "@dnd-kit/core";
 import { AnimateLayoutChanges, useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import cn from "classnames";
-
 import Actions from "../Actions/Actions";
 import Handle from "../Handle/Handle";
 import { TreeItem } from "@/types";
 import { useShowForm } from "@/hooks/useShowForm";
 import AddNavElementForm from "@/components/AddNavElementForm/AddNavElementForm";
+import ChildCount from "../ChildCount/ChildCount";
 
 export type SortableTreeItemProps = {
   id: UniqueIdentifier;
@@ -58,6 +58,7 @@ export function SortableTreeItem({
   };
   const { showForm, handleShowForm, handleHideForm } = useShowForm();
   const [isEdit, setIsEdit] = useState(false);
+
   const handleEdit = () => {
     setIsEdit(true);
     handleShowForm();
@@ -97,19 +98,21 @@ export function SortableTreeItem({
             onAddNew={handleShowForm}
           />
         )}
-        {clone && childCount && childCount > 1 ? (
-          <span className="absolute -right-2.5 -top-2.5 flex h-5 w-5 items-center justify-center rounded-full bg-blue-400 text-sm font-semibold text-white">
-            {childCount}
-          </span>
-        ) : null}
+        <ChildCount clone={clone} childCount={childCount} />
       </div>
       {handleNavLinkSubmit && showForm && (
-        <div className="px-6 py-4">
+        <div
+          className="px-6 py-4"
+          style={{
+            paddingLeft: `${depth ? indentationWidth * depth : indentationWidth}px`,
+          }}
+        >
           <AddNavElementForm
             handleNavLinkSubmit={handleNavLinkSubmit}
             handleHideForm={handleHideForm}
             defaultValues={isEdit ? value : undefined}
             elementId={id}
+            onRemove={onRemove}
           />
         </div>
       )}

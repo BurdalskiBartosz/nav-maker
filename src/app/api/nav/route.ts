@@ -3,7 +3,7 @@ import { navs } from "@/mock/mockData";
 import { generateId } from "@/utils/generateId";
 
 export async function GET() {
-  await delay(2000);
+  await delay(300);
   return Response.json(navs);
 }
 

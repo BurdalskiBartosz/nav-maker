@@ -9,3 +9,14 @@ export async function GET(
 
   return Response.json(nav);
 }
+
+export async function DELETE(
+  request: Request,
+  { params }: { params: Promise<{ id: string }> },
+) {
+  const id = (await params).id;
+  const index = navs.findIndex((nav) => nav.id === id);
+  navs.splice(index, 1);
+
+  return Response.json(true);
+}
