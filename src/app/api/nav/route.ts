@@ -8,8 +8,17 @@ export async function GET() {
 }
 
 export async function POST(req: Request) {
-  const data = await req.json();
-  navs.push({ id: generateId(), items: data });
+  const { items, id } = await req.json();
+
+  if (id) {
+    const index = navs.findIndex((nav) => nav.id === id);
+    navs[index] = {
+      id,
+      items,
+    };
+  } else {
+    navs.push({ id: generateId(), items });
+  }
   await delay(500);
   return Response.json(true);
 }
