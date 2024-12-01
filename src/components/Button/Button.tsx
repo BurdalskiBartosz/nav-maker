@@ -1,4 +1,4 @@
-import { PropsWithChildren, ReactNode } from "react";
+import { type PropsWithChildren, ReactNode } from "react";
 import cn from "classnames";
 import Link from "next/link";
 

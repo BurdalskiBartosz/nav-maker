@@ -6,7 +6,7 @@ export type HandleProps = {
   cursor?: CSSProperties["cursor"];
 } & React.HTMLAttributes<HTMLButtonElement>;
 
-export const Handle = (props: HandleProps) => {
+const Handle = (props: HandleProps) => {
   return (
     <button
       {...props}

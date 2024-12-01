@@ -1,7 +1,7 @@
 import Button from "@/components/Button/Button";
 
 type ActionsProps = {
-  onRemove: () => void;
+  onRemove?: () => void;
   onEdit: () => void;
   onAddNew: () => void;
 };

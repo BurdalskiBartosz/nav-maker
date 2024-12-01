@@ -1,7 +1,6 @@
 "use server";
-
-import { Nav, TreeItems } from "@/types";
 import { redirect } from "next/navigation";
+import type { Nav, TreeItems } from "@/types";
 
 export async function createNav(items: TreeItems, id?: string) {
   await fetch("http://localhost:3000/api/nav", {

@@ -1,4 +1,4 @@
-import { Nav, TreeItems } from "@/types";
+import type { Nav, TreeItems } from "@/types";
 import Link from "next/link";
 import Button from "../Button/Button";
 
