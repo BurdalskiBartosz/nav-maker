@@ -5,7 +5,7 @@ import Link from "next/link";
 type ButtonTypes = "primary" | "secondary" | "tetiary";
 
 type ButtonProps = {
-  handleClick?: (args: any) => void;
+  handleClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   type?: ButtonTypes;
   icon?: ReactNode;
   withBorders?: boolean;
