@@ -1,11 +1,11 @@
-import React, { CSSProperties, useState } from "react";
+import React, { type CSSProperties, useState } from "react";
 import type { UniqueIdentifier } from "@dnd-kit/core";
 import { AnimateLayoutChanges, useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import cn from "classnames";
 
 import Actions from "../Actions/Actions";
-import { Handle } from "../Handle/Handle";
+import Handle from "../Handle/Handle";
 import { TreeItem } from "@/types";
 import { useShowForm } from "@/hooks/useShowForm";
 import AddNavElementForm from "@/components/AddNavElementForm/AddNavElementForm";
@@ -90,7 +90,7 @@ export function SortableTreeItem({
           <span className="font-semibold text-primary-900">{value.name}</span>
           <span className="text-tetiary-600">{value.link}</span>
         </div>
-        {onRemove && (
+        {!clone && (
           <Actions
             onRemove={onRemove}
             onEdit={handleEdit}
@@ -107,7 +107,7 @@ export function SortableTreeItem({
         <div className="px-6 py-4">
           <AddNavElementForm
             handleNavLinkSubmit={handleNavLinkSubmit}
-            handleCancel={handleHideForm}
+            handleHideForm={handleHideForm}
             defaultValues={isEdit ? value : undefined}
             elementId={id}
           />

@@ -1,51 +1,27 @@
 "use client";
-import { FormEvent, useState } from "react";
+import { type FormEvent, useState } from "react";
 import AddNavElementForm from "@/components/AddNavElementForm/AddNavElementForm";
-import { TreeItem, TreeItems } from "@/types";
+import type { TreeItem, TreeItems } from "@/types";
 import { createNav } from "@/actions/navs";
 import Button from "../Button/Button";
 import EmptyStateInfoBox from "../EmptyStateInfoBox/EmptyStateInfoBox";
-import { SortableTree } from "../SortableTree/SortableTree";
+import SortableTree from "../SortableTree/SortableTree";
 import { useShowForm } from "@/hooks/useShowForm";
+import { updateNested } from "@/utils/updateNested";
 
 type NavCreatorProps = {
   navData?: TreeItems;
-  id?: string;
+  navId?: string;
 };
 
-function findNested(
-  data: TreeItem,
-  myArray: TreeItems,
-  id: string,
-  edit?: boolean,
-) {
-  myArray?.forEach((element, i) => {
-    if (element.id !== id) {
-      if (element.children.length > 0) {
-        findNested(data, element.children, id);
-      }
-    } else {
-      if (edit) {
-        myArray[i] = {
-          ...element,
-          name: data.name,
-          link: data.link,
-        };
-        return;
-      }
-      element.children.push(data);
-    }
-  });
-}
-
-const NavCreator = ({ navData, id }: NavCreatorProps) => {
+const NavCreator = ({ navData, navId }: NavCreatorProps) => {
   const [nav, setNav] = useState<TreeItems>(navData ?? []);
   const { showForm, handleShowForm, handleHideForm } = useShowForm();
 
   const handleNavLinkSubmit = (data: TreeItem, id?: string, edit?: boolean) => {
     if (id) {
       const navs = [...nav];
-      findNested(data, navs, id, edit);
+      updateNested(data, navs, id, edit);
       setNav([...navs]);
     } else {
       setNav([...nav, data]);
@@ -60,7 +36,7 @@ const NavCreator = ({ navData, id }: NavCreatorProps) => {
     event: FormEvent<HTMLFormElement | HTMLButtonElement>,
   ) => {
     event.preventDefault();
-    await createNav(nav, id);
+    await createNav(nav, navId);
   };
 
   if (nav.length === 0) {
@@ -69,7 +45,7 @@ const NavCreator = ({ navData, id }: NavCreatorProps) => {
         {showForm ? (
           <AddNavElementForm
             handleNavLinkSubmit={handleNavLinkSubmit}
-            handleCancel={handleHideForm}
+            handleHideForm={handleHideForm}
           />
         ) : (
           <EmptyStateInfoBox

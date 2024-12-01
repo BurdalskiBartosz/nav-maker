@@ -12,7 +12,7 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
       <TitleBarWithButton buttonLabel="Wróć" href="/">
         Edycja menu
       </TitleBarWithButton>
-      <NavCreator id={id} navData={data.items} />
+      <NavCreator navId={id} navData={data.items} />
     </main>
   );
 };

@@ -7,12 +7,12 @@ import Input from "../Input/Input";
 import TrashIcon from "../Icons/TrashIcon/TrashIcon";
 import { TreeItem } from "@/types";
 import { generateId } from "@/utils/generateId";
-import { UniqueIdentifier } from "@dnd-kit/core";
+import type { UniqueIdentifier } from "@dnd-kit/core";
 
 type AddNavElementFormProps = {
   elementId?: UniqueIdentifier;
   defaultValues?: z.infer<typeof navItemSchema>;
-  handleCancel: () => void;
+  handleHideForm: () => void;
   handleNavLinkSubmit: (data: TreeItem, id?: string, edit?: boolean) => void;
 };
 
@@ -24,7 +24,7 @@ const navItemSchema = z.object({
 const AddNavElementForm = ({
   elementId,
   defaultValues,
-  handleCancel,
+  handleHideForm,
   handleNavLinkSubmit,
 }: AddNavElementFormProps) => {
   const {
@@ -49,6 +49,7 @@ const AddNavElementForm = ({
       elementId as string | undefined,
       !!defaultValues,
     );
+    handleHideForm();
   }
 
   return (
@@ -74,7 +75,7 @@ const AddNavElementForm = ({
           />
         </div>
         <div className="flex gap-x-2">
-          <Button type="secondary" handleClick={handleCancel}>
+          <Button type="secondary" handleClick={handleHideForm}>
             Anuluj
           </Button>
           <Button type="tetiary">{defaultValues ? "Zapisz" : "Dodaj"}</Button>

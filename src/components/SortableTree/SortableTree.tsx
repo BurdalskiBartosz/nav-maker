@@ -17,7 +17,7 @@ import { useMounted } from "@/hooks/useMounted";
 import Button from "../Button/Button";
 import AddNavElementForm from "../AddNavElementForm/AddNavElementForm";
 import { useShowForm } from "@/hooks/useShowForm";
-import { TreeItem, TreeItems } from "@/types";
+import type { TreeItem, TreeItems } from "@/types";
 import { useDnd } from "@/hooks/useDnd";
 
 const measuring = {
@@ -33,12 +33,12 @@ type SortableTreeProps = {
   updateNav: (data: TreeItems) => void;
 };
 
-export function SortableTree({
+const SortableTree = ({
   navData,
   indentationWidth = 64,
   handleNavLinkSubmit,
   updateNav,
-}: SortableTreeProps) {
+}: SortableTreeProps) => {
   const mounted = useMounted();
   const { showForm, handleShowForm, handleHideForm } = useShowForm();
 
@@ -100,7 +100,7 @@ export function SortableTree({
           {showForm && (
             <div className="px-6 py-4">
               <AddNavElementForm
-                handleCancel={handleHideForm}
+                handleHideForm={handleHideForm}
                 handleNavLinkSubmit={handleNavLinkSubmit}
               />
             </div>
@@ -114,4 +114,6 @@ export function SortableTree({
       </SortableContext>
     </DndContext>
   );
-}
+};
+
+export default SortableTree;
