@@ -22,9 +22,11 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           {label}
         </label>
         <div className="relative">
-          <span className="text-quanternary-500 absolute left-3.5 top-2.5">
-            {icon}
-          </span>
+          {icon && (
+            <span className="absolute left-3.5 top-2.5 text-quanternary-500">
+              {icon}
+            </span>
+          )}
           <input
             ref={ref}
             id={id}

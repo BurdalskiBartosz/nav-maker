@@ -7,19 +7,20 @@ export function updateNested(
   edit?: boolean,
 ) {
   myArray?.forEach((element, i) => {
+    if (element.id === id && edit) {
+      myArray[i] = {
+        ...element,
+        name: data.name,
+        link: data.link,
+      };
+      return;
+    }
+
     if (element.id !== id) {
       if (element.children.length > 0) {
-        updateNested(data, element.children, id);
+        updateNested(data, element.children, id, edit);
       }
     } else {
-      if (edit) {
-        myArray[i] = {
-          ...element,
-          name: data.name,
-          link: data.link,
-        };
-        return;
-      }
       element.children.push(data);
     }
   });
